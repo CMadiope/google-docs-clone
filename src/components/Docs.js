@@ -8,7 +8,7 @@ function Docs({ database }) {
   const handleClose = () => setOpen(false);
   const [title, setTitle] = useState("");
   const collectionRef = collection(database, "docsData");
-  const
+  const [docsData, setDocsData] = useState([]);
   const addData = () => {
     addDoc(collectionRef, {
       title: title,
@@ -25,7 +25,7 @@ function Docs({ database }) {
 
   const getData = () => {
     onSnapshot(collectionRef, (data) => {
-      console.log(
+      setDocsData(
         data.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
         })
@@ -50,6 +50,16 @@ function Docs({ database }) {
       <button className='add-docs' onClick={handleOpen}>
         Add a Document
       </button>
+
+      <div className="grid-main">
+        {docsData.map((doc) => {
+          return (
+            <div className="grid-child">
+              <p>{doc.title}</p>
+            </div>
+          )
+        })}
+      </div>
 
       <Modal
         open={open}
