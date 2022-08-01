@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { useState } from 'react'
-import Box from '@mui/material/Box'
+import * as React from "react";
+import { useState } from "react";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import modal from "@mui/material/Modal";
@@ -17,27 +17,27 @@ const style = {
   p: 4,
 };
 
-const Modal = ({title, setTitle, addData}) => {
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-
+const Modal = ({ open, setOpen, title, setTitle, addData }) => {
+  const handleClose = () => setOpen(false);
 
   return (
     <div>
       <modal
-        open = {open}
+        open={open}
         onClose={handleClose}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
+        
       >
         <Box sx={style}>
-          <input placeholder='Add the Title' className='add-input'
-          onChange={(event) => setTitle(event.target.value)}
-          value={title}
+          <input
+            placeholder='Add the Title'
+            className='add-input'
+            onChange={(event) => setTitle(event.target.value)}
+            value={title}
           />
 
-          <div className="button-container">
+          <div className='button-container'>
             <button className='add-docs' onClick={addData}>
               Add
             </button>
@@ -45,7 +45,7 @@ const Modal = ({title, setTitle, addData}) => {
         </Box>
       </modal>
     </div>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
