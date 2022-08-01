@@ -33,6 +33,12 @@ const Modal = () => {
       >
         <Box sx={style}>
           <input placeholder='Add the Title' className='add-input' />
+
+          <div className="button-container">
+            <button className='add-docs'>
+              Add
+            </button>
+          </div>
         </Box>
       </modal>
     </div>
