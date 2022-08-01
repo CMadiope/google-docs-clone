@@ -35,8 +35,8 @@ const Modal = () => {
           <input placeholder='Add the Title' className='add-input' />
 
           <div className="button-container">
-            <button>
-              
+            <button className='add-docs'>
+              Add
             </button>
           </div>
         </Box>

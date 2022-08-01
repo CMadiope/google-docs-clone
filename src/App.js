@@ -1,10 +1,11 @@
 import './App.css';
 import Docs from './components/Docs';
+import {app, database} from './firebaseConfig'
 
 function App() {
   return (
     <div className="App">
-      <Docs/>
+      <Docs database ={database}/>
     </div>
   );
 }
