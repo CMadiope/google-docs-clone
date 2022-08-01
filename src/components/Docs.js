@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "./Modal";
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
 
@@ -8,6 +8,7 @@ function Docs({ database }) {
   const handleClose = () => setOpen(false);
   const [title, setTitle] = useState("");
   const collectionRef = collection(database, "docsData");
+  const
   const addData = () => {
     addDoc(collectionRef, {
       title: title,
@@ -31,6 +32,16 @@ function Docs({ database }) {
       );
     });
   };
+
+  const isMounted = useRef();
+
+  useEffect(() => {
+    if (isMounted.current) {
+      return;
+    }
+    isMounted.current = true;
+    getData();
+  }, []);
 
   return (
     <div className='docs-main'>
