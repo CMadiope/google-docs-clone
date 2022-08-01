@@ -9,9 +9,15 @@ function Docs() {
     <div className='docs-main'>
       <h1>Docs Clone</h1>
 
-      <button className='add-docs'>
+      <button className='add-docs' onClick={handleOpen}>
         Add a Document
       </button>
+
+      <Modal
+        open={open}
+        setOpen= {setOpen}
+      />
+
     </div>
   )
 }

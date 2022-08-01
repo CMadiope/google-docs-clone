@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import modal from "@mui/material/Modal";
 
 const style = {
   position: "absolute",
@@ -25,21 +25,16 @@ const Modal = () => {
 
   return (
     <div>
-      <Modal
+      <modal
         open = {open}
         onClose={handleClose}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
-          <Typography id= 'modal-modal-title' variant='h6' component='h2'>
-            Text in a modal
-          </Typography>
-          <Typography id='modal-modal-description' sx={{mt:2}}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, id.
-          </Typography>
+          <input placeholder='Add the Title' className='add-input' />
         </Box>
-      </Modal>
+      </modal>
     </div>
   )
 }
