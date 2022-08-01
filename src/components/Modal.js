@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-const Modal = () => {
+const Modal = ({title, setTitle, addData}) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -32,10 +32,13 @@ const Modal = () => {
         aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
-          <input placeholder='Add the Title' className='add-input' />
+          <input placeholder='Add the Title' className='add-input'
+          onChange={(event) => setTitle(event.target.value)}
+          value={title}
+          />
 
           <div className="button-container">
-            <button className='add-docs'>
+            <button className='add-docs' onClick={addData}>
               Add
             </button>
           </div>
