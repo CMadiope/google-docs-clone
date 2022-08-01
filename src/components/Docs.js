@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Modal from "./Modal";
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 function Docs({ database }) {
   const [open, setOpen] = React.useState(false);
@@ -9,6 +10,8 @@ function Docs({ database }) {
   const [title, setTitle] = useState("");
   const collectionRef = collection(database, "docsData");
   const [docsData, setDocsData] = useState([]);
+  let navigate = useNavigate()
+
   const addData = () => {
     addDoc(collectionRef, {
       title: title,
@@ -43,6 +46,11 @@ function Docs({ database }) {
     getData();
   }, []);
 
+  const getID = (id) => {
+    navigate(`/editDocs/${id}`);
+  };
+
+
   return (
     <div className='docs-main'>
       <h1>Docs Clone</h1>
@@ -51,13 +59,13 @@ function Docs({ database }) {
         Add a Document
       </button>
 
-      <div className="grid-main">
+      <div className='grid-main'>
         {docsData.map((doc) => {
           return (
-            <div className="grid-child">
+            <div className='grid-child' onClick={() => getID(doc.id)}>
               <p>{doc.title}</p>
             </div>
-          )
+          );
         })}
       </div>
 
